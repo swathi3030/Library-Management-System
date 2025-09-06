@@ -12,7 +12,7 @@ def add_book_endpoint():
     data = request.json
     book_id = add_book(data)
     if book_id:
-        send_new_book_email(data['title'], "swathimanjappa9.com")
+        send_new_book_email(data['title'], "swathimanjappa9@gmail.com")
         return jsonify({"id": book_id}), 201
     return jsonify({"error": "Could not add book"}), 500
 

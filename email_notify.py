@@ -9,12 +9,12 @@ def send_new_book_email(book_title, recipient):
         msg = EmailMessage()
         msg.set_content(f"New book '{book_title}' added to the library.")
         msg["Subject"] = "Library Notification: New Book"
-        msg["From"] = "swathimanjappa9@example.com"
+        msg["From"] = "swathimanjappa9@gmail.com"
         msg["To"] = recipient
 
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
             server.starttls()
-            server.login("swathimanjappa9@example.com", "app-password")
+            server.login("swathimanjappa9@gmail.com", "avhqysdohwupdhab")
             server.send_message(msg)
         logger.info(f"Email sent for {book_title} to {recipient}")
     except Exception as e:
