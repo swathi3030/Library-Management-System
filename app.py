@@ -44,6 +44,10 @@ def delete_book_endpoint(book_id):
 def stock_value():
     total_val = calculate_total_stock_value()
     return jsonify({"total_stock_value": total_val})
+# HOMEPAGE
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"message": "Welcome to the Library Management System (Flask Version)"})
 
 # MAIN
 if __name__ == "__main__":
