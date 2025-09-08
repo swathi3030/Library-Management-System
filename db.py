@@ -83,14 +83,17 @@ def delete_book(book_id):
         return None
 
 def get_books():
-    """Retrieve all books."""
-    try:
-        with get_db_conn() as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM Book")
-            books = cursor.fetchall()
-            logger.info("Fetched all books")
-            return books
-    except Exception as e:
-        logger.error(f"Get books failed: {e}")
-        return []
+    with get_db_conn() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, title, price, copies FROM Book")
+        rows = cursor.fetchall()
+        books = []
+        for row in rows:
+            books.append({
+                "id": row[0],
+                "title": row[1],
+                "price": row[2],
+                "copies": row[3]
+            })
+        return books
+
